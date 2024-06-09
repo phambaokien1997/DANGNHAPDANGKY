@@ -1,0 +1,59 @@
+﻿@model UserModel
+@{
+}
+<h1 style="color: #4CAF50;">Sách Là Bạn Đồng Hành Đáng Tin Cậy</h1>
+<h2>Đăng ký</h2>
+<div id="registration-form" style="margin: 20px auto; width: 300px; padding: 20px; border: 1px solid #ccc; border-radius: 5px; background-color: #f9f9f9;">
+    <label for="email">Email:</label><br>
+    <input type="email" id="email" name="email" required style="margin-bottom: 10px; width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;"><br>
+
+    <label for="password">Mật khẩu:</label><br>
+    <input type="password" id="password" name="password" required style="margin-bottom: 10px; width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;"><br>
+
+    <button id="save-btn" style="width: 100%; padding: 10px; border: none; border-radius: 5px; background-color: #4CAF50; color: white; cursor: pointer;">Đăng ký</button>
+</div>
+@if (Model == null || string.IsNullOrWhiteSpace(Model.Email) || string.IsNullOrWhiteSpace(Model.Password))
+{
+    <p style="color:red; text-align: center; margin-top: 10px;">Mời bạn nhập đầy đủ thông tin</p>
+}
+<script>
+    document.getElementById('save-btn').onclick = function () {
+        var email = document.getElementById('email').value;
+        var password = document.getElementById('password').value;
+        const url = 'https://localhost:7257/User/PostCreate';
+
+        // Dữ liệu bạn muốn gửi đi, có thể là một object JavaScript
+        const data = {
+            Email: email,
+            Password: password
+        };
+
+        // Tùy chọn cho yêu cầu fetch
+        const options = {
+            method: 'POST', // Phương thức của yêu cầu
+            headers: {
+                'Content-Type': 'application/json' // Định dạng dữ liệu bạn gửi đi (ở đây là JSON)
+            },
+            body: JSON.stringify(data) // Chuyển đổi object JavaScript thành chuỗi JSON
+        };
+
+        // Thực hiện yêu cầu fetch
+        fetch(url, options)
+            .then(response => {
+                // Xử lý phản hồi từ máy chủ
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json(); // Trích xuất dữ liệu JSON từ phản hồi
+            })
+            .then(data => {
+                // Xử lý dữ liệu trả về từ máy chủ
+                console.log('Response from server:', data);
+                alert(data.report)
+            })
+            .catch(error => {
+                // Xử lý lỗi nếu có
+                console.error('There was a problem with the fetch operation:', error);
+            });
+    };
+</script>

@@ -1,0 +1,46 @@
+﻿@model UserLogin
+@{
+}
+<div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh;">
+    <div id="login-form" style="margin: 20px auto; width: 300px; padding: 20px; border: 1px solid #ccc; border-radius: 5px; background-color: #f9f9f9;">
+        <input type="text" id="email" placeholder="Email" required style="margin-bottom: 10px; width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+        <input type="password" id="password" placeholder="Mật khẩu" required style="margin-bottom: 10px; width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+        <input type="submit" id="login-btn" value="Đăng nhập" style="width: 100%; padding: 10px; border: none; border-radius: 5px; background-color: #4CAF50; color: white; cursor: pointer;">
+    </div>
+    @if (Model == null || string.IsNullOrWhiteSpace(Model.Email) || string.IsNullOrWhiteSpace(Model.Password))
+    {
+        <p style="color:red;">Mời bạn nhập đầy đủ Email và password để đăng nhập</p>
+    }
+</div>
+<script>
+    document.getElementById('login-btn').onclick = function () {
+        var email = document.getElementById('email').value;
+        var password = document.getElementById('password').value;
+        const url = 'https://localhost:7257/User/PostLogin';
+        const data = {
+            Email: email,
+            Password: password
+        };
+        const options = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json' 
+            },
+            body: JSON.stringify(data) 
+        };
+        fetch(url, options)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json(); 
+            })
+            .then(data => {
+                console.log('Response from server:', data);
+                alert(data.report)
+            })
+            .catch(error => {
+                console.error('There was a problem with the fetch operation:', error);
+            });
+    };
+</script>

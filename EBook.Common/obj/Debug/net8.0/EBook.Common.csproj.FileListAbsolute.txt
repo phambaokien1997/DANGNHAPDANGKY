@@ -1,0 +1,11 @@
+D:\ASPBOOK\EBook.Common\bin\Debug\net8.0\EBook.Common.deps.json
+D:\ASPBOOK\EBook.Common\bin\Debug\net8.0\EBook.Common.dll
+D:\ASPBOOK\EBook.Common\bin\Debug\net8.0\EBook.Common.pdb
+D:\ASPBOOK\EBook.Common\obj\Debug\net8.0\EBook.Common.GeneratedMSBuildEditorConfig.editorconfig
+D:\ASPBOOK\EBook.Common\obj\Debug\net8.0\EBook.Common.AssemblyInfoInputs.cache
+D:\ASPBOOK\EBook.Common\obj\Debug\net8.0\EBook.Common.AssemblyInfo.cs
+D:\ASPBOOK\EBook.Common\obj\Debug\net8.0\EBook.Common.csproj.CoreCompileInputs.cache
+D:\ASPBOOK\EBook.Common\obj\Debug\net8.0\EBook.Common.dll
+D:\ASPBOOK\EBook.Common\obj\Debug\net8.0\refint\EBook.Common.dll
+D:\ASPBOOK\EBook.Common\obj\Debug\net8.0\EBook.Common.pdb
+D:\ASPBOOK\EBook.Common\obj\Debug\net8.0\ref\EBook.Common.dll
